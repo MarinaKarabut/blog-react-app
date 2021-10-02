@@ -27,7 +27,7 @@ const PostsListItem = ({ id, title, body, onDelete }) => {
                 </Link>
             </li>
             <div className={styles.btnWrapper}>
-                <Button onClick={onDelete} className={styles.btnDelete}>delete</Button>
+                <Button onClick={ onDelete } className={styles.btnDelete}>delete</Button>
                 <Button onClick={ toggleModal } className={styles.btnUpdate}>update</Button>
             </div>
         </div>

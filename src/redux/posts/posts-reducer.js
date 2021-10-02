@@ -1,5 +1,5 @@
-import { combineReducers } from "redux"
-import { createReducer } from "@reduxjs/toolkit"
+import { combineReducers } from 'redux';
+import { createReducer } from '@reduxjs/toolkit';
 import {
   getAllPostsSuccess,
   getOnePostSuccess,
@@ -19,39 +19,44 @@ import {
   deletePostRequest,
   updatePostRequest,
   addCommentRequest,
-} from "./posts-actions"
+} from './posts-actions';
 
-const initialStatePosts = []
+const initialStatePosts = [];
 
-const initialStatePost = {}
+const initialStatePost = {};
 
-const initialStateError = null
+const initialStateError = null;
 
-const initialStateComments = []
+const initialStateComments = [];
 
 const posts = createReducer(initialStatePosts, {
   [getAllPostsSuccess]: (_, { payload }) => payload,
   [addPostSuccess]: (state, { payload }) => [...state, payload],
-  [deletePostSuccess]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+  [deletePostSuccess]: (state, { payload }) => {
+    const newState = [...state];
+    const index = newState.findIndex(item => item.id === payload.id);
+    newState.splice(index, 1);
+    return [...newState];
+  },
+
   [updatePostSuccess]: (state, { payload }) => {
-    const newState = [...state]
-    const index = newState.findIndex((item) => item.id === payload.id)
+    const newState = [...state];
+    const index = newState.findIndex(item => item.id === payload.id);
     newState.splice(index, 1, {
       ...payload,
-    })
-    return [...newState]
+    });
+    return [...newState];
   },
-})
+});
 
 const post = createReducer(initialStatePost, {
   [getOnePostSuccess]: (_, { payload }) => payload,
-})
+});
 
 const comments = createReducer(initialStateComments, {
   [getOnePostSuccess]: (_, { payload }) => payload.comments,
   [addCommentSuccess]: (state, { payload }) => [...state, payload],
-})
+});
 
 const error = createReducer(initialStateError, {
   [getAllPostsError]: (_, { payload }) => payload,
@@ -71,7 +76,7 @@ const error = createReducer(initialStateError, {
 
   [addCommentError]: () => initialStateError,
   [addCommentSuccess]: () => initialStateError,
-})
+});
 
 const loading = createReducer(false, {
   [getAllPostsRequest]: () => true,
@@ -97,7 +102,7 @@ const loading = createReducer(false, {
   [addCommentRequest]: () => true,
   [addCommentSuccess]: () => false,
   [addCommentError]: () => false,
-})
+});
 
 export default combineReducers({
   posts,
@@ -105,4 +110,4 @@ export default combineReducers({
   loading,
   error,
   comments,
-})
+});

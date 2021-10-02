@@ -14,12 +14,11 @@ import styles from './UpdatePost.module.scss'
 
 
 const UpdatePost = ({ id }) => {
-    // console.log(id);
     const { title, body } = fields
 
     const dispatch = useDispatch();
 
-    const onSubmit = useCallback((id, data ) => dispatch(updatePost(id, data)), [dispatch]);
+    const onSubmit = useCallback((data ) => dispatch(updatePost(id, data)), [dispatch]);
 
     const [data, , handleChange, handleSubmit] = useForm({ initialState, onSubmit});
 
