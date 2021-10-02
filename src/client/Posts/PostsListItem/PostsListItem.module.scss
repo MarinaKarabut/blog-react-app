@@ -1,0 +1,48 @@
+.post {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  border-radius: 5px;
+  box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  &Item {
+    text-decoration: none;
+    color: #000;
+  }
+  &Title {
+    font-size: 22px;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  &Text {
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: start;
+    margin-bottom: 20px;
+    color: #696969;
+  }
+}
+
+.btn {
+  &Wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  &Delete {
+    width: 180px;
+    background-color: #ff0000;
+    &:hover,
+    &:focus {
+      background-color: #a52a2a;
+    }
+  }
+  &Update {
+    width: 180px;
+    background-color: #228b22;
+    &:hover,
+    &:focus {
+      background-color: #006400;
+    }
+  }
+}

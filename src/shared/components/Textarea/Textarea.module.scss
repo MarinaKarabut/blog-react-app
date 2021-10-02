@@ -1,0 +1,18 @@
+.textarea {
+  width: 380px;
+  background: #f6f7fb;
+  border-color: transparent;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #000000;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 23px;
+  padding-left: 10px;
+  resize: none;
+  &::placeholder {
+    color: #808080;
+  }
+}
