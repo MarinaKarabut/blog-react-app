@@ -32,6 +32,7 @@ const initialStateComments = [];
 const posts = createReducer(initialStatePosts, {
   [getAllPostsSuccess]: (_, { payload }) => payload,
   [addPostSuccess]: (state, { payload }) => [...state, payload],
+
   [deletePostSuccess]: (state, { payload }) => {
     const newState = [...state];
     const index = newState.findIndex(item => item.id === payload.id);

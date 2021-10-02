@@ -21,6 +21,7 @@ const SinglePostPage = () => {
 
     const { postId } = useParams();
 
+
     const dispatch = useDispatch()
 
     useEffect(() => {

@@ -9,20 +9,21 @@ import useForm from '../../../shared/hooks/useForm'
 import { addComment } from '../../../redux/posts/posts-operations';
 
 import styles from './Comment.module.scss'
-// import { useParams } from 'react-router';
 
-const Comment = () => {
+
+const Comment = ({ id }) => {
+    console.log(id);
     const { body } = fields
-
-    // const postId = useParams()
 
 
     const dispatch = useDispatch();
 
-    const onSubmit = useCallback((data) => dispatch(addComment(data)), [dispatch]);
+    const onSubmit = useCallback((data) => dispatch(addComment(data, id)), [dispatch]);
     
 
     const [data, , handleChange, handleSubmit] = useForm({ initialState, onSubmit });
+
+ 
 
     return (
         <div>

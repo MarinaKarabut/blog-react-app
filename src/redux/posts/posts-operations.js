@@ -75,10 +75,14 @@ export const updatePost = (id, body) => async dispatch => {
   }
 };
 
-export const addComment = body => async dispatch => {
+export const addComment = (body, postId) => async dispatch => {
+  const formData = {
+    ...body,
+    postId,
+  };
   dispatch(addCommentRequest());
   try {
-    const { data } = await axios.post('/comments', body);
+    const { data } = await axios.post('/comments', formData);
     dispatch(addCommentSuccess(data));
   } catch (error) {
     dispatch(addCommentError(error.message));

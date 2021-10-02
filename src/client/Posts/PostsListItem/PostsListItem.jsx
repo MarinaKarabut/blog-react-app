@@ -40,7 +40,7 @@ PostsListItem.defaultProps = {
     id: null,
     title: '',
     body: '',
-    onDelete: ()=>{}
+    onDelete: () => {}
 
 }
 
